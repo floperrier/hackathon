@@ -52,6 +52,14 @@ services:
                 - '-p${DB_PASSWORD}'
             retries: 3
             timeout: 5s
+    # front:
+    #     image: node:alpine
+    #     working_dir: /home/node/app
+    #     volumes:
+    #         - .:/home/node/app
+    #     command: "npm run dev"
+    #     ports:
+    #       - 3000:3000
     redis:
         image: 'redis:alpine'
         ports:

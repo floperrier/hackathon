@@ -7,8 +7,17 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-                <x-welcome />
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-10">
+                @developer
+                    @if (!Auth::user()->initiated)
+                        <livewire:wizard.developer-wizard :user="Auth::user()" show-step="codewars"/>
+                    @else
+                        <livewire:dashboard.developer />
+                    @endif
+                @enddeveloper
+                @admin
+                    je suis un admin!
+                @endadmin
             </div>
         </div>
     </div>
