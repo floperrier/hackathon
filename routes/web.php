@@ -1,5 +1,7 @@
 <?php
 
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // $response = Http::withHeaders(['Accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'])->get('https://www.codewars.com/api/v1/users/floperrier')->throw()->json();
+    // dump($response);
+    if (Auth::check()) {
+        return redirect(RouteServiceProvider::HOME);
+    }
+    return redirect('/login');
 });
 
 Route::middleware([
@@ -22,7 +29,5 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', fn () => view('dashboard'))->name('dashboard');
 });

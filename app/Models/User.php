@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
+use App\Enums\Roles\RoleEnum;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
@@ -17,6 +20,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -58,4 +62,21 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    protected $with = ['languagesRanks'];
+
+    public function isAdmin(): bool
+    {
+        return $this->hasRole(RoleEnum::Administrator->value);
+    }
+
+    public function isDeveloper(): bool
+    {
+        return $this->hasRole(RoleEnum::Developer->value);
+    }
+
+    public function languagesRanks(): HasMany
+    {
+        return $this->hasMany(LanguageRank::class, 'user_id');
+    }
 }
