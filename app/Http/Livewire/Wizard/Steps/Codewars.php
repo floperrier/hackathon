@@ -32,9 +32,11 @@ class Codewars extends StepComponent
     public function getRanks()
     {
         try {
-            $response = Http::withHeaders(['Accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'])->get('https://www.codewars.com/api/v1/users/' . $this->codewars_username)->throw()->json();
+            $response = Http::get('https://www.codewars.com/api/v1/users/' . $this->codewars_username)->throw()->json();
+            $this->user->codewars_score = Arr::get($response, 'ranks.overall.score');
             if ($languagesRanks = Arr::get($response, 'ranks.languages')) {
                 $this->user->codewars_username = $this->codewars_username;
+                $this->user->languagesRanks()->delete();
                 foreach ($languagesRanks as $language => $rank) {
                     $this->user->languagesRanks()->create([
                         'language_name' => $language,
@@ -46,7 +48,7 @@ class Codewars extends StepComponent
             }
             $this->user->save();
         } catch (\Throwable $th) {
-            if ($th->response->notFound()) {
+            if ($th?->response?->notFound()) {
                 $this->addError('codewars_username', 'Le nom d\'utilisateur n\'existe pas');
                 return;
             }

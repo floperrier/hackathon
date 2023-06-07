@@ -1,5 +1,3 @@
 <div>
-    {{-- Success is as dangerous as failure. --}}
-    test
-    
+    <h1>Developer dashboard</h1>
 </div>
