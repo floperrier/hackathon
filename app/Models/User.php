@@ -65,9 +65,14 @@ class User extends Authenticatable
 
     protected $with = ['languagesRanks'];
 
-    public function isAdmin(): bool
+    public function isHrManager(): bool
     {
-        return $this->hasRole(RoleEnum::Administrator->value);
+        return $this->hasRole(RoleEnum::HRManager->value);
+    }
+
+    public function isCommercial(): bool
+    {
+        return $this->hasRole(RoleEnum::Commercial->value);
     }
 
     public function isDeveloper(): bool

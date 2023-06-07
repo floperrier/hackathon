@@ -8,6 +8,7 @@ enum RoleEnum: string
 {
     use EnumHelper;
 
-    case Administrator = 'admin';
+    case HRManager = 'hr_manager';
+    case Commercial = 'commercial';
     case Developer = 'developer';
 }
