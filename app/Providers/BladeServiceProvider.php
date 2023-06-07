@@ -26,8 +26,11 @@ class BladeServiceProvider extends ServiceProvider
             }
             return "<p>{$haystack}</p>";
         });
-        Blade::if('admin', function () {
-            return Auth::user()->isAdmin();
+        Blade::if('hrmanager', function () {
+            return Auth::user()->isHrManager();
+        });
+        Blade::if('commercial', function () {
+            return Auth::user()->isCommercial();
         });
         Blade::if('developer', function () {
             return Auth::user()->isDeveloper();

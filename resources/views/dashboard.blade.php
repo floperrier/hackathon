@@ -15,9 +15,12 @@
                         <livewire:dashboard.developer />
                     @endif
                 @enddeveloper
-                @admin
-                    je suis un admin!
-                @endadmin
+                @hrmanager
+                    je suis un rh!
+                @endhrmanager
+                @commercial
+                    je suis un commercial!
+                @endcommercial
             </div>
         </div>
     </div>

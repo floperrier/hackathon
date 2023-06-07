@@ -18,7 +18,8 @@ enum ClientPermissionsEnum: string
     public static function getByRole(): array
     {
         return [
-            RoleEnum::Administrator->value => self::values(),
+            RoleEnum::HRManager->value => self::values(),
+            RoleEnum::Commercial->value => self::values(),
             RoleEnum::Developer->value => [
                 self::Access->value,
             ],
