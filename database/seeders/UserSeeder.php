@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Enums\Roles\RoleEnum;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Arr;
 
 class UserSeeder extends Seeder
 {
@@ -14,13 +13,6 @@ class UserSeeder extends Seeder
         foreach (\App\Enums\Roles\RoleEnum::values() as $role) {
             User::factory(20)->create()->each(function ($user) use ($role) {
                 $user->assignRole($role);
-
-                if ($role == RoleEnum::Developer->value) {
-                    $clients = \App\Models\Client::all();
-                    $user->client_id = Arr::random($clients->pluck('id')->toArray());
-                } else {
-                    $user->client_id = null;
-                }
             });
         }
     }
