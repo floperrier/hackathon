@@ -14,6 +14,13 @@ class UserSeeder extends Seeder
         foreach (\App\Enums\Roles\RoleEnum::values() as $role) {
             User::factory(20)->create()->each(function ($user) use ($role) {
                 $user->assignRole($role);
+
+                if ($role == RoleEnum::Developer->value) {
+                    $clients = \App\Models\Client::all();
+                    $user->client_id = Arr::random($clients->pluck('id')->toArray());
+                } else {
+                    $user->client_id = null;
+                }
             });
         }
     }
