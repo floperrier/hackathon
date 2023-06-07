@@ -43,6 +43,7 @@ class User extends Authenticatable
         'remember_token',
         'two_factor_recovery_codes',
         'two_factor_secret',
+        'client_id'
     ];
 
     /**
@@ -84,4 +85,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(LanguageRank::class, 'user_id');
     }
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class, 'client_id');
+    }
+
 }

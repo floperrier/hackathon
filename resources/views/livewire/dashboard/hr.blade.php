@@ -23,7 +23,7 @@
                     </div>
                     <div>
                         <div class="font-bold">{{ $user->name }}</div>
-                        <div class="text-sm opacity-50">United States</div>
+                        <div class="text-sm opacity-50">{{ $user->client->name }}</div>
                     </div>
                     </div>
                 </td>
