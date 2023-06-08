@@ -100,9 +100,15 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Project::class);
     }
+
     public function rewards()
     {
         return $this->belongsToMany(Reward::class, 'reward_user')->withTimestamps();
+    }
+
+    public function trainings()
+    {
+        return $this->belongsToMany(Training::class)->withPivot('is_completed', 'is_validated');
     }
 
 }
