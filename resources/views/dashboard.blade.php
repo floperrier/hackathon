@@ -16,7 +16,7 @@
                     @endif
                 @enddeveloper
                 @hrmanager
-                    je suis un rh!
+                    <livewire:dashboard.hr />
                 @endhrmanager
                 @commercial
                     je suis un commercial!
