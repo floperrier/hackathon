@@ -93,4 +93,9 @@ class User extends Authenticatable
         return $this->belongsTo(Client::class, 'client_id');
     }
 
+    public function trainings()
+    {
+        return $this->belongsToMany(Training::class)->withPivot('is_completed', 'is_validated');
+    }
+
 }
