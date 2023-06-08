@@ -27,6 +27,19 @@ class UserFactory extends Factory
     {
         $clients = \App\Models\Client::all();
 
+        $hasClient = $this->faker->boolean();
+        $clientId = null;
+
+        if ($hasClient) {
+            $clientId = Arr::random($clients->pluck('id')->toArray());
+            $available = \App\Enums\AvailableEnum::ASSIGNED->value;
+        } else {
+            $enum = array_filter(\App\Enums\AvailableEnum::values(), function ($v) {
+                return $v !== \App\Enums\AvailableEnum::ASSIGNED->value;
+            });
+            $available = Arr::random($enum);
+        }
+
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
@@ -37,7 +50,10 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'profile_photo_path' => null,
             'current_team_id' => null,
-            'client_id' =>  Arr::random($clients->pluck('id')->toArray()),
+            'client_id' =>  $clientId,
+            'job_title' => $this->faker->jobTitle(),
+            'salary' => $this->faker->numberBetween(1000, 10000),
+            'available' => $available,
         ];
     }
 

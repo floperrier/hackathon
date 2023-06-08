@@ -1,19 +1,41 @@
 <div>
-    {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
-      <div class="overflow-x-auto">
+    <div>
+        <h2 class="text-2xl font-semibold leading-tight">Développeur</h2>
+    </div>
+    <div class="my-2 flex sm:flex-row flex-col justify-end">
+        <div class="flex flex-row mb-1 sm:mb-0">
+            <div class="flex-none dropdown z-10 w-full relative">
+                <label tabindex="0" class="btn m-1">Langages <x-bxs-down-arrow class="w-3 h-3" /></label>
+                <ul tabindex="0" class="dropdown-content menu p-2 shadow block bg-base-100 rounded-box w-52" style="overflow:auto; max-height: 250px;">
+                    @foreach ($languagesDatas as $option)
+                    <div class="flex gap-x-4 mb-2 items-center">
+                        <input wire:model="languages" name="languages" value="{{$option}}" type="checkbox" class="checkbox" />
+                        <li>{{ $option }}</li>
+                    </div>
+                    @endforeach
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="overflow-x-auto">
         <table class="table">
           <!-- head -->
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Disponible</th>
+              <th>Noms</th>
+              <th>Travail</th>
+              <th>Salaire</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             @foreach ($users as $user)
                 <tr>
+                <th>
+                    <span class="badge badge-xs" @if($user->available == 'available') style="background-color:green;" @elseif ($user->available == "assigned") style="background-color:orange;" @else style="background-color:red;" @endif></span>
+                </th>
                 <td>
                     <div class="flex items-center space-x-3">
                     <div class="avatar">
@@ -23,16 +45,29 @@
                     </div>
                     <div>
                         <div class="font-bold">{{ $user->name }}</div>
-                        <div class="text-sm opacity-50">{{ $user->client->name }}</div>
+                        <div class="text-sm opacity-50">
+                            @if ($user->client != null)
+                                {{ $user->client->name }}
+                            @endif
+                        </div>
                     </div>
                     </div>
                 </td>
                 <td>
-                    Zemlak, Daniel and Leannon
+                   {{ $user->job_title }}
                     <br/>
-                    <span class="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                    @if($user->languagesRanks->count() == 0)
+                        <span class="badge badge-ghost badge-sm">Aucun langage</span>
+                    @else
+                        @foreach ($user->languagesRanks as $i => $lang)
+                            <span class="badge badge-ghost badge-sm" @if($i > 2) style="display:none;" @endif>{{$lang->language_name}}</span>
+                            @if($i == 2)
+                                <span class="badge badge-ghost badge-sm">...</span>
+                            @endif
+                        @endforeach
+                    @endif
                 </td>
-                <td>Purple</td>
+                <td>{{ $user->salary }} € </td>
                 <th>
                     <button class="btn btn-ghost btn-xs">details</button>
                 </th>
