@@ -27,6 +27,16 @@ class RolesAndPermissionsSeeder extends Seeder
                 'password' => Hash::make('admin'),
                 'name' => Str::title(Str::replace('_', ' ', $role)),
             ]);
+
+            if ($role != RoleEnum::Developer->value) {
+                $user->update([
+                    'client_id' => null,
+                    'job_title' => null,
+                    'salary' => null,
+                    'available' => null,
+                ]);
+            }
+
             $user->assignRole($role);
         }
     }
