@@ -31,6 +31,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'codewars_username',
+        'codewars_score'
     ];
 
     /**

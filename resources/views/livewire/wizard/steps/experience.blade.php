@@ -7,7 +7,7 @@
                   <th>Langage</th>
                   <th>Niveau</th>
                   <th>Score</th>
-                  <th></th>
+                  <th>Expérience</th>
                 </tr>
               </thead>
               <tbody>
@@ -19,7 +19,6 @@
                             <div>
 
                                 <div class="font-bold">{{ $languageRank->language_name }}</div>
-                                <div class="text-sm opacity-50">United States</div>
                             </div>
                             </div>
                         </td>
@@ -44,11 +43,10 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Job</th>
-                  <th>Favorite Color</th>
-                  <th></th>
+                  <th>Langage</th>
+                  <th>Niveau</th>
+                  <th>Score</th>
+                  <th>Expérience</th>
                 </tr>
               </tfoot>
             </table>

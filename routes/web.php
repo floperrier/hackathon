@@ -31,3 +31,7 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', fn () => view('dashboard'))->name('dashboard');
 });
+
+Route::group(['middleware' => ['role:developer']], function () {
+    Route::get('/skills', fn () => view('skills'))->name('skills');
+});
