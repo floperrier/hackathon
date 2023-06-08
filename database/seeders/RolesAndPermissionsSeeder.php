@@ -22,22 +22,23 @@ class RolesAndPermissionsSeeder extends Seeder
         // Artisan::call('make:admin admin@test.com admin');
 
         foreach (RoleEnum::values() as $role) {
-            $user = User::factory()->create([
-                'email' => $role.'@test.com',
-                'password' => Hash::make('admin'),
-                'name' => Str::title(Str::replace('_', ' ', $role)),
-            ]);
-
-            if ($role != RoleEnum::Developer->value) {
-                $user->update([
-                    'client_id' => null,
-                    'job_title' => null,
-                    'salary' => null,
-                    'available' => null,
+            if ($role === RoleEnum::Developer->value) {
+                for ($i = 0; $i < 10; $i++) {
+                    $user = User::factory()->create([
+                        'email' => $role.$i.'@test.com',
+                        'password' => Hash::make('admin'),
+                        'name' => fake()->name,
+                    ]);
+                    $user->assignRole($role);
+                }
+            } else {
+                $user = User::factory()->create([
+                    'email' => $role.'@test.com',
+                    'password' => Hash::make('admin'),
+                    'name' => Str::title(Str::replace('_', ' ', $role)),
                 ]);
+                $user->assignRole($role);
             }
-
-            $user->assignRole($role);
         }
     }
 }

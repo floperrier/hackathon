@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Wizard\Steps;
 
+use App\Gamify\Points\RankGained;
 use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -38,12 +39,15 @@ class Codewars extends StepComponent
                 $this->user->codewars_username = $this->codewars_username;
                 $this->user->languagesRanks()->delete();
                 foreach ($languagesRanks as $language => $rank) {
-                    $this->user->languagesRanks()->create([
+                    $languageRank = $this->user->languagesRanks()->create([
                         'language_name' => $language,
                         'rank_name' => $rank['name'],
                         'rank' => $rank['rank'],
                         'score' => $rank['score'],
                     ]);
+                    for ($i = -8; $i <= $rank['rank']; $i++) {
+                        $this->user->givePoint(new RankGained($languageRank, $i));
+                    }
                 }
             }
             $this->user->save();

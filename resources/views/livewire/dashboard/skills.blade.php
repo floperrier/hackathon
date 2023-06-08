@@ -6,26 +6,26 @@
           <thead class="table-header-groups">
             <tr class="table-row">
               <th class="table-cell" x-on:click="levelSort = null; languageSort = languageSort == 'desc' ? 'asc' : 'desc'">
-                <span>Langage</span>
+                <span class="cursor-pointer">Langage</span>
                 <x-bxs-down-arrow x-show="languageSort == 'desc'" class="w-3 h-3 inline" />
                 <x-bxs-up-arrow x-show="languageSort == 'asc'" class="w-3 h-3 inline" />
                 <x-bxs-sort-alt x-show="languageSort == null" class="w-3 h-3 inline" />
                 </th>
               <th class="table-cell" x-on:click="languageSort = null; levelSort = levelSort == 'desc' ? 'asc' : 'desc'">
-                <span>Niveau</span>
+                <span class="cursor-pointer">Niveau</span>
                 <x-bxs-down-arrow x-show="levelSort == 'desc'" class="w-3 h-3 inline" />
                 <x-bxs-up-arrow x-show="levelSort == 'asc'" class="w-3 h-3 inline" />
                 <x-bxs-sort-alt x-show="levelSort == null" class="w-3 h-3 inline" />
             </th>
-              <th class="table-cell">Score</th>
+              <th class="table-cell">Score Codewars</th>
               <th class="table-cell">
                 <div class="dropdown z-0 relative">
                     <label tabindex="0" class="btn m-1">Expérience <x-bxs-down-arrow class="w-3 h-3" /></label>
                     <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                         @foreach (\App\Enums\YearsExperienceEnum::values() as $option)
                         <div class="flex gap-x-4 mb-2 items-center">
-                            <input wire:model="experiencesFilter" name="experiencesFilter" value="{{$option}}" type="checkbox" class="checkbox" />
-                            <li>{{ __("wizard.years_experience.$option") }}</li>
+                            <input id="{{$option}}" wire:model="experiencesFilter" name="experiencesFilter" value="{{$option}}" type="checkbox" class="checkbox" />
+                            <label class="cursor-pointer" for="{{$option}}">{{ __("wizard.years_experience.$option") }}</label>
                         </div>
                         @endforeach
                     </ul>
@@ -50,7 +50,7 @@
                     </td>
                     <td>{{ $languageRank->score }}</td>
                     <th>
-                        {{ $languageRank->years_of_experience ? __("wizard.years_experience.$languageRank->years_of_experience") : null }}
+                        {{ $languageRank->years_of_experience ? __("wizard.years_experience.$languageRank->years_of_experience") : 'Aucune expérience' }}
                     </th>
                 </tr>
             @empty

@@ -34,4 +34,6 @@ Route::middleware([
 
 Route::group(['middleware' => ['role:developer']], function () {
     Route::get('/skills', fn () => view('skills'))->name('skills');
+    Route::get('/leaderboard', fn () => view('leaderboard'))->name('leaderboard');
+    Route::get('/rewards', fn () => view('rewards'))->name('rewards');
 });
