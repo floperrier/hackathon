@@ -111,5 +111,4 @@ class User extends Authenticatable
         return $this->belongsToMany(Training::class)->withPivot('is_completed', 'is_validated');
     }
 
-
 }
