@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\Roles\RoleEnum;
+use App\Models\LanguageRank;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 

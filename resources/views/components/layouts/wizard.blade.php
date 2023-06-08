@@ -57,12 +57,16 @@
         </ol>
     </nav>
     <div>
-        <div class="border-b border-gray-200 pb-5 mb-8">
-            <h3 class="text-base font-semibold leading-6 text-gray-900">{{ $step->label }}</h3>
-            <p class="mt-2 max-w-4xl text-sm text-gray-500">
-                {{ $step->long_description }}
-            </p>
-        </div>
+        @foreach ($steps as $step)
+            @if ($step->isCurrent())
+                <div class="border-b border-gray-200 pb-5 mb-8">
+                    <h3 class="text-base font-semibold leading-6 text-gray-900">{{ $step->label }}</h3>
+                    <p class="mt-2 max-w-4xl text-sm text-gray-500">
+                        {{ $step->long_description }}
+                    </p>
+                </div>
+            @endif
+        @endforeach
         {{-- <h1 class="text-2xl">{{ $step->title ?? $step->label }}</h1>
         <p>{{ $step->long_description }}</p> --}}
         {{ $slot }}

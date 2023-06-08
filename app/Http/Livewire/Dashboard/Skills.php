@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Dashboard;
 
 use App\Enums\DevLangagesEnum;
+use App\Enums\YearsExperienceEnum;
 use App\Models\LanguageRank;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -28,6 +29,9 @@ class Skills extends Component
 
         if ($this->experiencesFilter) {
             $languagesRanks->whereIn('years_of_experience', $this->experiencesFilter);
+            if (in_array(YearsExperienceEnum::NONE->value, $this->experiencesFilter)) {
+                $languagesRanks->orWhereNull('years_of_experience');
+            }
         }
         if ($this->levelSort) {
             $languagesRanks = $languagesRanks->orderBy('rank', $this->levelSort);
