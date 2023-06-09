@@ -15,6 +15,7 @@
         "livewire/livewire": "^2.11",
         "mallardduck/blade-boxicons": "^2.4",
         "qcod/laravel-gamify": "^1.0",
+        "spatie/laravel-activitylog": "^4.7",
         "spatie/laravel-livewire-wizard": "^1.2",
         "spatie/laravel-permission": "^5.10"
     },

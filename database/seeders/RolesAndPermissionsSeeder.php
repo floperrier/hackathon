@@ -7,6 +7,7 @@ use App\Models\Partner\Network;
 use App\Models\Partner\Office;
 use App\Models\Partner\WealthManager;
 use App\Models\Person;
+use App\Models\Project;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
@@ -24,7 +25,10 @@ class RolesAndPermissionsSeeder extends Seeder
         foreach (RoleEnum::values() as $role) {
             if ($role === RoleEnum::Developer->value) {
                 for ($i = 0; $i < 10; $i++) {
-                    $user = User::factory()->create([
+                    $user = User::factory()->has(Project::factory(fake()->numberBetween(0,2))->sequence([
+                        'start_date' => fake()->dateTimeBetween('-1 year', 'now'),
+                        'end_date' => fake()->dateTimeBetween('now', '+1 month'),
+                    ]))->create([
                         'email' => $role.$i.'@test.com',
                         'password' => Hash::make('admin'),
                         'name' => fake()->name,
