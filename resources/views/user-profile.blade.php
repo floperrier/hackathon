@@ -18,7 +18,7 @@
                                 alt="profil photo">
                         </div>
                         <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{ $datas->name }}</h1>
-                        <h3 class="text-gray-600 font-lg text-semibold leading-6">Devops &#x2022; Chez <span class="badge badge-accent">{{ $clientDatas->name }}</span></h3>
+                        <h3 class="text-gray-600 font-lg text-semibold leading-6">{{ $datas->job_title }} &#x2022; Chez <span class="badge badge-accent">{{ $clientDatas ? $clientDatas->name : "Pas entreprise" }}</span></h3>
                         <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">Lorem ipsum dolor sit amet
                             consectetur adipisicing elit.
                             Reprehenderit, eligendi dolorum sequi illum qui unde aspernatur non deserunt
@@ -26,7 +26,7 @@
                         <div class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                             <div class="flex justify-between py-3">
                                 <span class="label-text">Status</span>
-                                <input type="checkbox" class="toggle toggle-success" />
+                                <input type="checkbox" class="toggle {{ $datas->available ? 'toggle-success' : '' }}" {{ $datas->available ? 'checked' : '' }} />
                             </div>
                             <div class="flex items-center py-3">
                                 <span>Date d'arrivée</span>
@@ -49,50 +49,21 @@
                             <span>Profiles Similaire</span>
                         </div>
                         <div class="flex flex-col justify-between items-start">
-                            <div class="flex items-center text-center my-2">
-                                <div class="mr-3">
-                                    <img class="h-16 w-16 rounded-full mx-auto"
-                                    src="https://cdn.australianageingagenda.com.au/wp-content/uploads/2015/06/28085920/Phil-Beckett-2-e1435107243361.jpg"
-                                    alt="">
+                            @forelse($similarProfils as $similarUser)
+                                <div class="flex items-center text-center my-2">
+                                    <div class="mr-3">
+                                        <img class="h-16 w-16 rounded-full mx-auto"
+                                        src="{{ $similarUser->profile_photo_url }}"
+                                        alt="">
+                                    </div>
+                                    <div class="flex flex-col items-start">
+                                        <a href="{{ route('userProfile', $similarUser->id) }}" class="font-bold">{{ $similarUser->name }}</a>
+                                        <span class="badge badge-neutral">{{ $similarUser->job_title }}</span>
+                                    </div>
                                 </div>
-                                <div class="flex flex-col items-center">
-                                    <a href="#" class="font-bold">Julien P.</a>
-                                    <span class="badge badge-neutral">Dev Sénior</span>
-                                </div>
-                            </div>
-                            <div class="flex items-center text-center my-2">
-                                <div class="mr-3">
-                                    <img class="h-16 w-16 rounded-full mx-auto"
-                                    src="https://cdn.australianageingagenda.com.au/wp-content/uploads/2015/06/28085920/Phil-Beckett-2-e1435107243361.jpg"
-                                    alt="">
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <a href="#" class="font-bold">Julien P.</a>
-                                    <span class="badge badge-neutral">Dev Sénior</span>
-                                </div>
-                            </div>
-                            <div class="flex items-center text-center my-2">
-                                <div class="mr-3">
-                                    <img class="h-16 w-16 rounded-full mx-auto"
-                                    src="https://cdn.australianageingagenda.com.au/wp-content/uploads/2015/06/28085920/Phil-Beckett-2-e1435107243361.jpg"
-                                    alt="">
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <a href="#" class="font-bold">Julien P.</a>
-                                    <span class="badge badge-neutral">Dev Sénior</span>
-                                </div>
-                            </div>
-                            <div class="flex items-center text-center my-2">
-                                <div class="mr-3">
-                                    <img class="h-16 w-16 rounded-full mx-auto"
-                                    src="https://cdn.australianageingagenda.com.au/wp-content/uploads/2015/06/28085920/Phil-Beckett-2-e1435107243361.jpg"
-                                    alt="">
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <a href="#" class="font-bold">Julien P.</a>
-                                    <span class="badge badge-neutral">Dev Sénior</span>
-                                </div>
-                            </div>
+                            @empty
+                                <div><p>Aucun profile trouvé</p></div>
+                            @endforelse
                         </div>
                     </div>
                     <!-- End of friends card -->
@@ -144,11 +115,13 @@
                                 </div>
                             </div>
                             <div class="gap-2 m-2">
-                                <h1 class="font-bold">Skills</h1>
+                                <h1 class="font-bold">Compétences/Languages</h1>
                                 <ul>
-                                    <li class="badge badge-accent">Javascript</li>
-                                    <li class="badge badge-neutral">Java</li>
-                                    <li class="badge badge-secondary">C#</li>
+                                    @forelse($datas->languagesRanks as $key => $language)
+                                        <li class="badge {{ $key%2 == 0 ? "badge-accent" : "badge-neutral" }} text-white">{{ $language->language_name}}</li>
+                                    @empty
+                                        <li class="badge badge-accent">Aucun languages</li>
+                                    @endforelse
                                 </ul>
                             </div>
                         </div>
