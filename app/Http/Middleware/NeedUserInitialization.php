@@ -25,7 +25,7 @@ class NeedUserInitialization
             }
         }
         $user = Auth::user();
-        if ($user && !$user->initiate && $user->hasRole(RoleEnum::Developer->value) && !$request->routeIs('dashboard')) {
+        if ($user && !$user->initiated && $user->hasRole(RoleEnum::Developer->value) && !$request->routeIs('dashboard')) {
             return redirect()->route('dashboard');
         }
         return $next($request);
