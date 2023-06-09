@@ -38,19 +38,23 @@
 
                     <div class="form-control" style="width:50%">
                         <label class="label">
-                            <span class="label-text">Début de la formation</span>
+                            <span class="label-text">Durée</span>
                         </label>
-                        <input id="training-start-at" name="training-start-at" required type="date" class="input input-bordered " placeholder="Select date">
-                    </div>
+                        <div class="flex">
+                            <div class="form-control m-1">
+                                <input id="training-duration-d" name="training-duration-d" type="number" placeholder="00" required min="0" max="99" class="input input-bordered" />
+                            </div>
+                            <span class="text-2xl m-1">j</span>
+                            <div class="form-control m-1">
+                                <input id="training-duration-h" name="training-duration-h" placeholder="00" type="number" required min="0" max="23" class="input input-bordered" />
+                            </div>
+                            <span class="text-2xl m-1">h</span>
+                            <div class="form-control m-1">
+                                <input id="training-duration-m" name="training-duration-m" placeholder="00" type="number" required min="0" max="59" class="input input-bordered" />
+                            </div>
+                        </div>
 
-                    <div class="form-control" style="width:50%">
-                        <label class="label">
-                            <span class="label-text">Fin de la formation</span>
-                        </label>
-                        <input id="training-end-at" name="training-end-at" required type="date" class="input input-bordered " placeholder="Select date">
-                    </div>
-
-                    <button class="btn mt-6" style="width:50%">Ajouter</button>
+                    <button class="btn mt-6">Ajouter</button>
                 </form>
             </div>
         </div>

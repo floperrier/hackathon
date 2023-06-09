@@ -19,8 +19,7 @@
                         <thead>
                             <tr>
                             <th>Noms</th>
-                            <th>Début</th>
-                            <th>Fin</th>
+                            <th>Durée</th>
                             <th>Carbon score</th>
                             <th></th>
                             </tr>
@@ -32,14 +31,16 @@
                                         {{ $training->name }}
                                     </td>
                                     <td>
-                                        {{ $training->start_at }}
-                                    </td>
-                                    <td>
-                                        {{ $training->end_at }}
+                                        @if ($training->duration / 60 / 60 >= 1)
+                                            {{ (int) ($training->duration / 60 / 60) }} h
+                                            {{ (int) $training->duration / 60 % 60 }} min
+                                        @else
+                                            {{ $training->duration / 60 }} min
+                                        @endif
                                     </td>
                                     <td> {{ $training->profit_carbon_score }} </td>
                                     <th>
-                                        <button class="btn btn-ghost btn-xs">details</button>
+                                        <a class="btn btn-ghost btn-xs" href="{{ route('training-show', $training->id) }}">details</a>
                                     </th>
                                 </tr>
                             @endforeach

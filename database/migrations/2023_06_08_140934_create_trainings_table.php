@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('trainings', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
-            $table->date('start_at');
-            $table->date('end_at');
+            $table->text('description');
+            $table->integer('duration');
             $table->integer('profit_carbon_score');
             $table->timestamps();
         });
