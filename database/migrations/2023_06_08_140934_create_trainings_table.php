@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->dateTime('duration');
-            $table->string('profit_carbon_score');
+            $table->date('start_at');
+            $table->date('end_at');
+            $table->integer('profit_carbon_score');
             $table->timestamps();
         });
 
