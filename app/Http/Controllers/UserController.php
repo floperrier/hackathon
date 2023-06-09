@@ -19,7 +19,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $userClient = $user->client;
-        $similarProfil = $this->similarProfil($id) ;
+        $similarProfil = $this->similarProfil($id);
 
         // dd($similarProfil);
 

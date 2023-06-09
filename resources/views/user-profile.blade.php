@@ -26,7 +26,18 @@
                         <div class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                             <div class="flex justify-between py-3">
                                 <span class="label-text">Status</span>
-                                <input type="checkbox" class="toggle {{ $datas->available ? 'toggle-success' : '' }}" {{ $datas->available ? 'checked' : '' }} />
+                                <input type="checkbox" @class([
+                                        'toggle',
+                                        'toggle-success' => ($datas->available == 'available'),
+                                        'toggle-warning' => ($datas->available == 'assigned'),
+                                        'toggle-error' => ($datas->available == 'notAvailable'),
+                                    ])
+                                    @style([
+                                        'checked' => ($datas->available == 'available'),
+                                        // 'checked' => ($datas->available == 'assigned'),
+                                        // 'toggle-error' => ($datas->available == 'notAvailable'),
+                                    ])
+                                />
                             </div>
                             <div class="flex items-center py-3">
                                 <span>Date d'arrivée</span>
