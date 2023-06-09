@@ -3,11 +3,12 @@
 namespace App\Http\Livewire\Dashboard;
 
 use App\Enums\DevLangagesEnum;
+use App\Models\LanguageRank;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 
-class Hr extends Component
+class hr extends Component
 {
 
     public $usersPerPage = 5;

@@ -31,7 +31,7 @@
             </tr>
           </thead>
           <tbody>
-            @foreach ($users as $user)
+            @forelse ($users as $user)
                 <tr>
                 <th>
                     <span class="badge badge-xs" @if($user->available == 'available') style="background-color:green;" @elseif ($user->available == "assigned") style="background-color:orange;" @else style="background-color:red;" @endif></span>
@@ -69,14 +69,17 @@
                 </td>
                 <td>{{ $user->salary }} € </td>
                 <th>
-                    <button class="btn btn-ghost btn-xs">details</button>
+                    <a class="btn btn-ghost btn-xs" href="{{ route('userProfile',$user->id) }}">details</a>
                 </th>
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td class="">Aucune donnée correspondant à votre recherche</td>
+                </tr>
+            @endforelse
           </tbody>
         </table>
-
-            {{ $users->links() }}
+        {{ $users->links() }}
       </div>
 
 </div>
