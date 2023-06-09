@@ -12,6 +12,40 @@
 
 namespace App\Models{
 /**
+ * App\Models\Client
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string $phone
+ * @property string $address
+ * @property string $city
+ * @property string $state
+ * @property string $zip
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
+ * @property-read int|null $users_count
+ * @method static \Database\Factories\ClientFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Client newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Client newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Client query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereState($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereZip($value)
+ */
+	class Client extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\LanguageRank
  *
  * @property int $id
@@ -42,6 +76,31 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Mission
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $description
+ * @property int $client_id
+ * @property int $user_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Mission newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Mission newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Mission query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Mission whereClientId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Mission whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Mission whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Mission whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Mission whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Mission whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Mission whereUserId($value)
+ */
+	class Mission extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\User
  *
  * @property int $id
@@ -61,12 +120,21 @@ namespace App\Models{
  * @property string|null $codewars_username
  * @property int|null $codewars_score
  * @property int $initiated
+ * @property int|null $client_id
+ * @property string|null $job_title
+ * @property int|null $salary
+ * @property string|null $available
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \QCod\Gamify\Badge> $badges
+ * @property-read int|null $badges_count
+ * @property-read \App\Models\Client|null $client
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\LanguageRank> $languagesRanks
  * @property-read int|null $languages_ranks_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Spatie\Permission\Models\Permission> $permissions
  * @property-read int|null $permissions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \QCod\Gamify\Reputation> $reputations
+ * @property-read int|null $reputations_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Spatie\Permission\Models\Role> $roles
  * @property-read int|null $roles_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
@@ -77,6 +145,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User permission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
  * @method static \Illuminate\Database\Eloquent\Builder|User role($roles, $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAvailable($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereClientId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCodewarsScore($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCodewarsUsername($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
@@ -85,11 +155,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereInitiated($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereJobTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereProfilePhotoPath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereReputation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereSalary($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorConfirmedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorRecoveryCodes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)
