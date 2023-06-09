@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TrainingController;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -41,4 +42,10 @@ Route::group(['middleware' => ['role:developer']], function () {
 
 Route::group(['middleware' => ['role:hr_manager']], function () {
     Route::get('/profile/{id}', [UserController::class, 'show'])->name('userProfile');
+});
+
+Route::group(['middleware' => ['role:hr_manager']], function () {
+    Route::get('/trainings', [TrainingController::class, 'index'])->name('training-list');
+    Route::get('/trainings/add', [TrainingController::class, 'create'])->name('training-add');
+    Route::post('/trainings/add', [TrainingController::class, 'store'])->name('training-store');
 });
