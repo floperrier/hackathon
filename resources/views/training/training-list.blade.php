@@ -31,7 +31,11 @@
                                         {{ $training->name }}
                                     </td>
                                     <td>
-                                        @if ($training->duration / 60 / 60 >= 1)
+                                        @if($training->duration / 60 / 60 / 24 >= 1)
+                                            {{ (int) ($training->duration / 60 / 60 / 24) }} j
+                                            {{ (int) ($training->duration / 60 / 60) % 24 }} h
+                                            {{ (int) $training->duration / 60 % 60 }} min
+                                        @elseif($training->duration / 60 / 60 >= 1)
                                             {{ (int) ($training->duration / 60 / 60) }} h
                                             {{ (int) $training->duration / 60 % 60 }} min
                                         @else
