@@ -2,18 +2,29 @@
 
 namespace App\Http\Livewire\Dashboard;
 
+use App\Enums\DevLangagesEnum;
+use App\Models\LanguageRank;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 
-class Hr extends Component
+class hr extends Component
 {
+    // public $usersPerPage = 5;
+    // public $languages = [];
+
     public function render()
     {
-
-        $users = \App\Models\User::paginate(10);
-
+        // $data = User::paginate($this->usersPerPage);
+        // if (count($this->languages)){
+        //     $data = User::whereHas('languagesRanks', function(Builder $query) {
+        //         $query->whereIn('language_name', $this->languages);
+        //     })->paginate($this->usersPerPage);
+        // }
 
         return view('livewire.dashboard.hr', [
-            'users' => $users
+            'users' => User::paginate(5),
+            // 'languagesDatas' => DevLangagesEnum::values(), //
         ]);
     }
 }

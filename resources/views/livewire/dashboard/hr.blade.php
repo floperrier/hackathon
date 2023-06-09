@@ -12,7 +12,7 @@
             </tr>
           </thead>
           <tbody>
-            @foreach ($users as $user)
+            @forelse ($users as $user)
                 <tr>
                 <td>
                     <div class="flex items-center space-x-3">
@@ -34,14 +34,18 @@
                 </td>
                 <td>Purple</td>
                 <th>
-                    <button class="btn btn-ghost btn-xs">details</button>
+                    <a class="btn btn-ghost btn-xs" href="{{ route('userProfile',$user->id) }}">details</a>
+                    {{-- <button class="btn btn-ghost btn-xs" ="{{ route('userProfile', Auth::user()->currentTeam->id) }}>details</button> --}}
                 </th>
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td class="">Aucune donnée correspondant à votre recherche</td>
+                </tr>
+            @endforelse
           </tbody>
         </table>
-
-            {{ $users->links() }}
+        {{ $users->links() }}
       </div>
 
 </div>

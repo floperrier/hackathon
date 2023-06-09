@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -34,4 +35,8 @@ Route::middleware([
 
 Route::group(['middleware' => ['role:developer']], function () {
     Route::get('/skills', fn () => view('skills'))->name('skills');
+});
+
+Route::group(['middleware' => ['role:hr_manager']], function () {
+    Route::get('/profile/{id}', [UserController::class, 'show'])->name('userProfile');
 });
