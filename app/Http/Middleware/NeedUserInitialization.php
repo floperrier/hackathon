@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Enums\Roles\RoleEnum;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,7 +25,7 @@ class NeedUserInitialization
             }
         }
         $user = Auth::user();
-        if ($user && !$user->initiated && !$request->routeIs('dashboard')) {
+        if ($user && !$user->initiate && $user->hasRole(RoleEnum::Developer->value) && !$request->routeIs('dashboard')) {
             return redirect()->route('dashboard');
         }
         return $next($request);
