@@ -15,9 +15,11 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('skills') }}" :active="request()->routeIs('skills')">
-                        {{ __('Mes compétences') }}
-                    </x-nav-link>
+                    @developer
+                        <x-nav-link href="{{ route('skills') }}" :active="request()->routeIs('skills')">
+                            {{ __('Mes compétences') }}
+                        </x-nav-link>
+                    @enddeveloper
                     <x-nav-link href="{{ route('leaderboard') }}" :active="request()->routeIs('leaderboard')">
                         {{ __('Classement') }}
                     </x-nav-link>
