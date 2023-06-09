@@ -29,9 +29,9 @@ class RewardFactory extends Factory
         return [
             'name' => $name,
             'description' => $this->faker->paragraph,
-            'image' => 'https://source.unsplash.com/featured/?' . Str::slug($name),
-            'is_new' => Arr::random([true, false]),
+            'image' => $this->faker->imageUrl(640, 480),
             'required_score' => $this->faker->randomElement(RewardRequiredScoreEnum::values()),
+            'created_at' => $this->faker->dateTimeBetween('-1 month', 'now'),
         ];
     }
 }

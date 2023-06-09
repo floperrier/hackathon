@@ -172,6 +172,7 @@ return [
         App\Providers\JetstreamServiceProvider::class,
         App\Providers\FormWizardServiceProvider::class,
         App\Providers\BladeServiceProvider::class,
+        App\Providers\FakerServiceProvider::class,
     ])->toArray(),
 
     /*

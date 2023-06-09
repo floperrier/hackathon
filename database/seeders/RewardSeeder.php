@@ -9,6 +9,6 @@ class RewardSeeder extends Seeder
 {
     public function run()
     {
-        Reward::factory(50)->create();
+        Reward::factory(30)->create();
     }
 }
