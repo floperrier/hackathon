@@ -18,25 +18,21 @@
                                 alt="profil photo">
                         </div>
                         <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{ $datas->name }}</h1>
-                        <h3 class="text-gray-600 font-lg text-semibold leading-6">Owner at Her Company Inc.</h3>
+                        <h3 class="text-gray-600 font-lg text-semibold leading-6">Devops &#x2022; Chez <span class="badge badge-accent">{{ $clientDatas->name }}</span></h3>
                         <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">Lorem ipsum dolor sit amet
                             consectetur adipisicing elit.
-                            Reprehenderit, eligendi dolorum sequi illum qui unde aspernatur non deserunt</p>
-                        <ul
-                            class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
-                            <li class="flex items-center py-3">
-                                <span>Status</span>
-                                <span class="ml-auto">
-                                    <span
-                                        class="bg-orange-500 py-1 px-2 rounded text-white text-sm">
-                                        {{$clientDatas->name}}</span>
-                                    </span>
-                            </li>
-                            <li class="flex items-center py-3">
-                                <span>Member since</span>
+                            Reprehenderit, eligendi dolorum sequi illum qui unde aspernatur non deserunt
+                        </p>
+                        <div class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
+                            <div class="flex justify-between py-3">
+                                <span class="label-text">Status</span>
+                                <input type="checkbox" class="toggle toggle-success" />
+                            </div>
+                            <div class="flex items-center py-3">
+                                <span>Date d'arrivée</span>
                                 <span class="ml-auto">Nov 07, 2016</span>
-                            </li>
-                        </ul>
+                            </div>
+                        </div>
                     </div>
                     <!-- End of profile card -->
                     <div class="my-4"></div>
@@ -116,34 +112,44 @@
                             </span>
                             <span class="tracking-wide">Détails</span>
                         </div>
-                        <div class="text-gray-700">
-                            <div class="grid md:grid-cols-2 text-sm">
-                                <div class="grid grid-cols-2">
-                                    <div class="px-4 py-2 font-semibold">Nom & Prénom</div>
-                                    <div class="px-4 py-2">{{ $datas->name }}</div>
-                                </div>
-                                <div class="grid grid-cols-2">
-                                    <div class="px-4 py-2 font-semibold">Genre</div>
-                                    <div class="px-4 py-2">Female</div>
-                                </div>
-                                <div class="grid grid-cols-2">
-                                    <div class="px-4 py-2 font-semibold">Contact N°</div>
-                                    <div class="px-4 py-2">+11 998001001</div>
-                                </div>
-                                <div class="grid grid-cols-2">
-                                    <div class="px-4 py-2 font-semibold">Adresse</div>
-                                    <div class="px-4 py-2">Beech Creek, PA, Pennsylvania</div>
-                                </div>
-                                <div class="grid grid-cols-2">
-                                    <div class="px-4 py-2 font-semibold">Email.</div>
-                                    <div class="px-4 py-2">
-                                        <a class="text-blue-800" href="mailto:jane@example.com">jane@example.com</a>
+                        <div class="divide-y">
+                            <div class="text-gray-700">
+                                <div class="grid md:grid-cols-2 text-sm">
+                                    <div class="grid grid-cols-2">
+                                        <div class="px-4 py-2 font-semibold">Nom & Prénom</div>
+                                        <div class="px-4 py-2">{{ $datas->name }}</div>
+                                    </div>
+                                    <div class="grid grid-cols-2">
+                                        <div class="px-4 py-2 font-semibold">Genre</div>
+                                        <div class="px-4 py-2">Female</div>
+                                    </div>
+                                    <div class="grid grid-cols-2">
+                                        <div class="px-4 py-2 font-semibold">Contact N°</div>
+                                        <div class="px-4 py-2">+11 998001001</div>
+                                    </div>
+                                    <div class="grid grid-cols-2">
+                                        <div class="px-4 py-2 font-semibold">Adresse</div>
+                                        <div class="px-4 py-2">Beech Creek, PA, Pennsylvania</div>
+                                    </div>
+                                    <div class="grid grid-cols-2">
+                                        <div class="px-4 py-2 font-semibold">Email.</div>
+                                        <div class="px-4 py-2">
+                                            <a class="text-blue-800" href="mailto:jane@example.com">jane@example.com</a>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-2">
+                                        <div class="px-4 py-2 font-semibold">Date de naissance</div>
+                                        <div class="px-4 py-2">Feb 06, 1998</div>
                                     </div>
                                 </div>
-                                <div class="grid grid-cols-2">
-                                    <div class="px-4 py-2 font-semibold">Date de naissance</div>
-                                    <div class="px-4 py-2">Feb 06, 1998</div>
-                                </div>
+                            </div>
+                            <div class="gap-2 m-2">
+                                <h1 class="font-bold">Skills</h1>
+                                <ul>
+                                    <li class="badge badge-accent">Javascript</li>
+                                    <li class="badge badge-neutral">Java</li>
+                                    <li class="badge badge-secondary">C#</li>
+                                </ul>
                             </div>
                         </div>
                     </div>

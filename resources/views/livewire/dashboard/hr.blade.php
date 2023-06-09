@@ -35,7 +35,6 @@
                 <td>Purple</td>
                 <th>
                     <a class="btn btn-ghost btn-xs" href="{{ route('userProfile',$user->id) }}">details</a>
-                    {{-- <button class="btn btn-ghost btn-xs" ="{{ route('userProfile', Auth::user()->currentTeam->id) }}>details</button> --}}
                 </th>
                 </tr>
             @empty
