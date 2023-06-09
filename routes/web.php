@@ -30,10 +30,9 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', fn () => view('dashboard'))->name('dashboard');
+    Route::get('/leaderboard', fn () => view('leaderboard'))->name('leaderboard');
 });
 
 Route::group(['middleware' => ['role:developer']], function () {
     Route::get('/skills', fn () => view('skills'))->name('skills');
-    Route::get('/leaderboard', fn () => view('leaderboard'))->name('leaderboard');
-    Route::get('/rewards', fn () => view('rewards'))->name('rewards');
 });
