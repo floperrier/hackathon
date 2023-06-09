@@ -76,27 +76,58 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\Mission
+ * App\Models\Project
+ *
+ * @property-read \App\Models\Client|null $client
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $developers
+ * @property-read int|null $developers_count
+ * @method static \Database\Factories\ProjectFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Project newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Project newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Project query()
+ */
+	class Project extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Reward
  *
  * @property int $id
- * @property string $name
- * @property string $description
- * @property int $client_id
- * @property int $user_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|Mission newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Mission newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Mission query()
- * @method static \Illuminate\Database\Eloquent\Builder|Mission whereClientId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Mission whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Mission whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Mission whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Mission whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Mission whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Mission whereUserId($value)
+ * @property string $name
+ * @property string|null $description
+ * @property string|null $image
+ * @property int $is_new
+ * @property int $required_score
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
+ * @property-read int|null $users_count
+ * @method static \Database\Factories\RewardFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Reward newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Reward newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Reward query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Reward whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reward whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reward whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reward whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reward whereIsNew($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reward whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reward whereRequiredScore($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reward whereUpdatedAt($value)
  */
-	class Mission extends \Eloquent {}
+	class Reward extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\RewardUser
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|RewardUser newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|RewardUser newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|RewardUser query()
+ */
+	class RewardUser extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -133,8 +164,12 @@ namespace App\Models{
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Spatie\Permission\Models\Permission> $permissions
  * @property-read int|null $permissions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Project> $projects
+ * @property-read int|null $projects_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \QCod\Gamify\Reputation> $reputations
  * @property-read int|null $reputations_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Reward> $rewards
+ * @property-read int|null $rewards_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Spatie\Permission\Models\Role> $roles
  * @property-read int|null $roles_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
