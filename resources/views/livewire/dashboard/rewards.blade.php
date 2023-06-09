@@ -61,7 +61,7 @@
                 <h3 class="font-bold text-lg" id="rewardName"></h3>
                 <p class="py-4" id="rewardDescription"></p>
                 <div class="flex flex-col gap-2">
-                    <div class="badge badge-outline self-end">
+                    <div class="badge badge-outline self-end gap-1">
                         <span id="rewardRequiredScore"></span><span> points requis</span>
                     </div>
                     <div class="justify-end">
