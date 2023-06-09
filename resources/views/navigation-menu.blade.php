@@ -23,6 +23,11 @@
                     <x-nav-link href="{{ route('leaderboard') }}" :active="request()->routeIs('leaderboard')">
                         {{ __('Classement') }}
                     </x-nav-link>
+                    @hrmanager
+                        <x-nav-link href="{{ route('training-list') }}" :active="request()->routeIs('trainings')">
+                            {{ __('Formations') }}
+                        </x-nav-link>
+                    @endhrmanager
                 </div>
             </div>
 
