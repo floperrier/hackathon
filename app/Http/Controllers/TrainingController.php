@@ -36,17 +36,23 @@ class TrainingController extends Controller
                 'training-name' => 'required',
                 'training-description' => 'required',
                 'training-profit-carbon-score' => 'required',
-                'training-end-at' => 'required',
-                'training-start-at' => 'required',
+                'training-duration-d' => 'required',
+                'training-duration-h' => 'required',
+                'training-duration-m' => 'required',
             ]
         );
 
+        $days = (int) $request->input('training-duration-d') * 24 * 60 * 60;
+        $hours = (int) $request->input('training-duration-h') * 60 * 60;
+        $minutes = (int) $request->input('training-duration-m') * 60;
+
+        $duration = $days + $hours + $minutes;
+
         $training = new Training();
-        $training->name = $request->input('training-name');
-        $training->description = $request->input('training-description');
-        $training->profit_carbon_score = $request->input('training-profit-carbon-score');
-        $training->end_at = new DateTime($request->input('training-end-at'));
-        $training->start_at = new DateTime($request->input('training-start-at'));
+        $training->name = (string) $request->input('training-name');
+        $training->description = (string) $request->input('training-description');
+        $training->profit_carbon_score = (int) $request->input('training-profit-carbon-score');
+       $training->duration = $duration;
 
         $training->save();
 
@@ -58,7 +64,7 @@ class TrainingController extends Controller
      */
     public function show(Training $training)
     {
-        //
+        return view('training/training-show', ['training' => $training]);
     }
 
     /**

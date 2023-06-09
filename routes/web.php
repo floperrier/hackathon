@@ -42,4 +42,5 @@ Route::group(['middleware' => ['role:hr_manager']], function () {
     Route::get('/trainings', [TrainingController::class, 'index'])->name('training-list');
     Route::get('/trainings/add', [TrainingController::class, 'create'])->name('training-add');
     Route::post('/trainings/add', [TrainingController::class, 'store'])->name('training-store');
+    Route::get('/trainings/{training}', [TrainingController::class, 'show'])->name('training-show');
 });
