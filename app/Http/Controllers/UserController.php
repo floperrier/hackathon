@@ -21,8 +21,6 @@ class UserController extends Controller
         $userClient = $user->client;
         $similarProfil = $this->similarProfil($id);
 
-        // dd($similarProfil);
-
         return view('user-profile', [
             'datas' => $user,
             'clientDatas' => $userClient,
