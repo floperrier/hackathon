@@ -27,7 +27,7 @@
                         {{ __('Récompenses') }}
                     </x-nav-link>
                     @hrmanager
-                        <x-nav-link href="{{ route('training-list') }}" :active="request()->routeIs('trainings')">
+                        <x-nav-link href="{{ route('training-list') }}" :active="request()->routeIs('training-list')">
                             {{ __('Formations') }}
                         </x-nav-link>
                     @endhrmanager
