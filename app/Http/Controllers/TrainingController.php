@@ -14,8 +14,7 @@ class TrainingController extends Controller
      */
     public function index()
     {
-        $trainings = Training::paginate(5);
-        return view('training/training-list', ['trainings' => $trainings]);
+        return view('training/training-list');
     }
 
     /**

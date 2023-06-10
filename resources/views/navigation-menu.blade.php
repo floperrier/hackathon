@@ -31,6 +31,12 @@
                             {{ __('Formations') }}
                         </x-nav-link>
                     @endhrmanager
+
+                    @developer
+                        <x-nav-link href="{{ route('training-list') }}" :active="request()->routeIs('training-list')">
+                            {{ __('Formations') }}
+                        </x-nav-link>
+                    @enddeveloper
                 </div>
             </div>
 
