@@ -20,6 +20,7 @@ class hr extends Component
         $data = User::whereHas('roles', function(Builder $query) {
             $query->where('name', 'Developer');
         })->paginate($this->usersPerPage);
+
         if (count($this->languages)){
             $data = User::whereHas('languagesRanks', function(Builder $query) {
                 $query->whereIn('language_name', $this->languages);
