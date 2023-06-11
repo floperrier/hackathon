@@ -69,7 +69,7 @@
                 </td>
                 <td>{{ $user->salary }} € </td>
                 <th>
-                    <a class="btn btn-ghost btn-xs" href="{{ route('userProfile',$user->id) }}">details</a>
+                    <a class="btn btn-ghost btn-xs text-green" href="{{ route('userProfile',$user->id) }}">details</a>
                 </th>
                 </tr>
             @empty
