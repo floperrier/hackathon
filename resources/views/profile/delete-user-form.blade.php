@@ -13,7 +13,7 @@
         </div>
 
         <div class="mt-5">
-            <x-danger-button wire:click="confirmUserDeletion" wire:loading.attr="disabled">
+            <x-danger-button wire:click="confirmUserDeletion" wire:loading.attr="disabled" class="bg-red">
                 {{ __('Delete Account') }}
             </x-danger-button>
         </div>
@@ -44,7 +44,7 @@
                     {{ __('Cancel') }}
                 </x-secondary-button>
 
-                <x-danger-button class="ml-3" wire:click="deleteUser" wire:loading.attr="disabled">
+                <x-danger-button class="ml-3 bg-red" wire:click="deleteUser" wire:loading.attr="disabled">
                     {{ __('Delete Account') }}
                 </x-danger-button>
             </x-slot>
