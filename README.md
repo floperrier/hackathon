@@ -7,6 +7,53 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Installation
+
+You needed docker
+
+make .env file
+
+
+```bash
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php82-composer:latest \
+    composer install --ignore-platform-reqs
+```
+
+```bash
+alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+```
+
+```bash
+sail up -d
+```
+
+```bash
+sail artisan key:generate
+```
+
+```bash
+sail artisan migrate
+```
+
+```bash
+sail npm install
+```
+
+If you want to seed the database with dummy data, you can use the following command:
+
+```bash
+sail artisan db:seed
+```
+
+```bash
+sail npm run build
+```
+
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
