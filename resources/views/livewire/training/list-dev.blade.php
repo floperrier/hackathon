@@ -70,17 +70,30 @@
                 modal.close();
             });
 
-            Livewire.on('showTrainingModal', training => {
+            Livewire.on('showTrainingModal', data => {
+
                 const modal = document.getElementById('trainingModal');
                 const claimButton = document.getElementById('trainingClaimButton');
                 const nameElement = document.getElementById('trainingName');
                 const descriptionElement = document.getElementById('trainingDescription');
                 const trainingRequiredScore = document.getElementById('trainingRequiredScore');
+                const trainingClaimButton = document.getElementById('trainingClaimButton');
 
-                claimButton.setAttribute('wire:click', `claimTraining(${training.id})`);
-                nameElement.textContent = training.name;
-                descriptionElement.textContent = training.description;
-                trainingRequiredScore.textContent = training.profit_carbon_score;
+                claimButton.setAttribute('wire:click', `claimTraining(${data.training.id})`);
+                nameElement.textContent = data.training.name;
+                descriptionElement.textContent = data.training.description;
+                trainingRequiredScore.textContent = data.training.profit_carbon_score;
+
+                if (data.trainingParticipate) {
+                    trainingClaimButton.classList.add('btn-disabled');
+                    trainingClaimButton.setAttribute('disabled', true);
+                    trainingClaimButton.textContent = 'Participé';
+                } else {
+                    trainingClaimButton.classList.remove('btn-disabled');
+                    trainingClaimButton.removeAttribute('disabled');
+                    trainingClaimButton.textContent = 'Participer';
+                }
+
                 modal.showModal();
             });
         });

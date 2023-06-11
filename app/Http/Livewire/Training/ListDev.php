@@ -13,7 +13,13 @@ class ListDev extends Component
     public function showTraining($trainingId)
     {
         $training = \App\Models\Training::find($trainingId);
-        $this->emit('showTrainingModal', $training);
+
+        $trainingParticipate = Auth::user()->trainings->contains($training);
+
+        $this->emit('showTrainingModal', [
+            'training' => $training,
+            'trainingParticipate' => $trainingParticipate
+        ]);
     }
 
     public function claimTraining($trainingId)
