@@ -19,7 +19,7 @@
                     <livewire:dashboard.hr />
                 @endhrmanager
                 @commercial
-                    je suis un commercial!
+                    <livewire:dashboard.commercial />
                 @endcommercial
             </div>
         </div>
