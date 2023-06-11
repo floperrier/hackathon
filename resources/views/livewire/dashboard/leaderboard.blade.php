@@ -71,7 +71,7 @@
             @endif
             <td>{{ $user->getPoints(true) }}</td>
             <th>
-                <button class="btn btn-ghost btn-xs text-green">details</button>
+                <button class="btn btn-ghost btn-xs text-green-500">details</button>
             </th>
             </tr>
         @endforeach

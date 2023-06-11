@@ -39,7 +39,7 @@
                                     {{ $session->ip_address }},
 
                                     @if ($session->is_current_device)
-                                        <span class="text-green font-semibold">{{ __('This device') }}</span>
+                                        <span class="text-green-500 font-semibold">{{ __('This device') }}</span>
                                     @else
                                         {{ __('Last active') }} {{ $session->last_active }}
                                     @endif
@@ -52,11 +52,11 @@
         @endif
 
         <div class="flex items-center mt-5">
-            <x-button wire:click="confirmLogout" wire:loading.attr="disabled" class="bg-red">
+            <x-button wire:click="confirmLogout" wire:loading.attr="disabled" class="bg-red-500">
                 {{ __('Log Out Other Browser Sessions') }}
             </x-button>
 
-            <x-action-message class="ml-3 bg-green" on="loggedOut">
+            <x-action-message class="ml-3 bg-green-500" on="loggedOut">
                 {{ __('Done.') }}
             </x-action-message>
         </div>

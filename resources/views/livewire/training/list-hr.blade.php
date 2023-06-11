@@ -34,7 +34,7 @@
                     </td>
                     <td> {{ $training->profit_carbon_score }} </td>
                     <th>
-                        <a class="btn btn-ghost btn-xs text-green" href="{{ route('training-show', $training->id) }}">details</a>
+                        <a class="btn btn-ghost btn-xs text-green-500" href="{{ route('training-show', $training->id) }}">details</a>
                     </th>
                 </tr>
             @endforeach

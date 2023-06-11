@@ -47,11 +47,11 @@
             @endif
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-green dark:text-green hover:text-green dark:hover:text-green rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue dark:focus:ring-offset-green" href="{{ route('login') }}">
+                <a class="underline text-sm text-green-500 dark:text-green-500 hover:text-green-500 dark:hover:text-green-500 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-green-500" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-button class="ml-4 bg-red">
+                <x-button class="ml-4 bg-red-500">
                     {{ __('Register') }}
                 </x-button>
             </div>
