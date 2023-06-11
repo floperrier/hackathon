@@ -28,30 +28,17 @@
                                 <span
                                     @class([
                                         'kbd',
-                                        'bg-green-500' => ($datas->available == 'available'),
-                                        'bg-orange-500' => ($datas->available == 'assigned'),
-                                        'bg-red-500' => ($datas->available == 'notAvailable'),
+                                        'bg-green-500' => ($userStatus == 'available'),
+                                        'bg-orange-500' => ($userStatus == 'assigned'),
+                                        'bg-red-500' => ($userStatus == 'notAvailable'),
                                     ])
                                 >Status</span>
-                                <select wire:model="userStatus" class="select select-ghost max-w-sm">
+                                <select wire:model.lazy="userStatus" class="select select-ghost max-w-sm">
                                     <option disabled selected>Change Status</option>
                                     @foreach (\App\Enums\AvailableEnum::values() as $status)
                                         <option value="{{$status}}">{{$status}}</option>
                                     @endforeach
                                 </select>
-                                {{-- <input type="checkbox" @class([
-                                        'toggle',
-                                        'toggle-success' => ($datas->available == 'available'),
-                                        'toggle-warning' => ($datas->available == 'assigned'),
-                                        'toggle-error' => ($datas->available == 'notAvailable'),
-                                    ])
-                                    @style([
-                                        'checked' => ($datas->available == 'available'),
-                                        // 'checked' => ($datas->available == 'assigned'),
-                                        // 'toggle-error' => ($datas->available == 'notAvailable'),
-                                    ])
-                                /> --}}
-
                             </div>
                             <div class="flex items-center py-3">
                                 <span>Date d'arrivée</span>
@@ -130,7 +117,7 @@
                                     <div class="grid grid-cols-2">
                                         <div class="px-4 py-2 font-semibold">Email.</div>
                                         <div class="px-4 py-2">
-                                            <a class="text-blue-800" href="mailto:jane@example.com">jane@example.com</a>
+                                            <a class="text-blue-800" href="mailto:{{ $datas->email }}">{{ $datas->email }}</a>
                                         </div>
                                     </div>
                                     <div class="grid grid-cols-2">
