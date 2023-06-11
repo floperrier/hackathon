@@ -23,9 +23,11 @@
                     <x-nav-link href="{{ route('leaderboard') }}" :active="request()->routeIs('leaderboard')">
                         {{ __('Classement') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('rewards') }}" :active="request()->routeIs('rewards')">
-                        {{ __('Récompenses') }}
-                    </x-nav-link>
+                    @developer
+                        <x-nav-link href="{{ route('rewards') }}" :active="request()->routeIs('rewards')">
+                            {{ __('Récompenses') }}
+                        </x-nav-link>
+                    @enddeveloper
                     @hrmanager
                         <x-nav-link href="{{ route('training-list') }}" :active="request()->routeIs('training-list')">
                             {{ __('Formations') }}
