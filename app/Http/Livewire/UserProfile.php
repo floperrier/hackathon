@@ -22,12 +22,15 @@ class UserProfile extends Component
     }
 
     public function updatedUserStatus(){
-        if($this->userStatus != $this->user->available) {
+        // if($this->userStatus != $this->user->available) {
             DB::table('users')
-              ->where('id', $this->user->id)
-              ->update(['available' => $this->userStatus]);
-            // dd(['status'=>$this->userStatus, 'this->user->available'=>$this->user->available]);
-        }
+            ->where('id', $this->user->id)
+            ->update(['available' => $this->userStatus]);
+
+            // Update Status color
+            $this->user = User::find($this->user->id);
+            // dd($this->user->available);
+        // }
     }
 
     public function render()
@@ -35,9 +38,21 @@ class UserProfile extends Component
         return view('livewire.user-profile', [
             'datas' => $this->user,
             'clientDatas' => $this->userClient,
-            'similarProfils' => $this->getSimilarProfil($this->user->id)
+            'similarProfils' => $this->getSimilarProfil($this->user->id),
+            "userStatus" => $this->user->available,
         ]);
     }
+
+    // public function getUserStatusClass($status)
+    // {
+    //     if ($status === 'available') {
+    //         return 'kbd bg-green-500'; // Classe CSS pour le statut actif
+    //     } elseif ($status === 'assigned') {
+    //         return 'kbd bg-orange-500'; // Classe CSS pour le statut inactif
+    //     } else {
+    //         return 'kbd bg-red-500'; // Classe CSS par défaut si la valeur n'est pas reconnue
+    //     }
+    // }
 
     /**
      * Return user similar profil base on this languages.
@@ -46,7 +61,6 @@ class UserProfile extends Component
      * @return Response
      */
     private function getSimilarProfil($utilisateurId){
-
         $utilisateur = User::find($utilisateurId);
         $utilisateursSimilaires = [];
 
@@ -65,7 +79,7 @@ class UserProfile extends Component
     private function calculerPourcentageCorrespondance($listeCompUtilisateur, $listeCompAutreUtilisateur) {
         $nbCommunes = count(array_intersect($listeCompUtilisateur, $listeCompAutreUtilisateur));
         $pourcentageCorrespondance = 0;
-        if(count($listeCompAutreUtilisateur) > 0){
+        if(count($listeCompUtilisateur) > 0){
             $pourcentageCorrespondance = ($nbCommunes / count($listeCompUtilisateur)) * 100;
         }
         return $pourcentageCorrespondance;
