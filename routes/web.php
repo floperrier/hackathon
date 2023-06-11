@@ -26,6 +26,11 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
+Route::group(['middleware' => ['role:hr_manager']], function () {
+    Route::get('/trainings/add', [TrainingController::class, 'create'])->name('training-add');
+    Route::post('/trainings/add', [TrainingController::class, 'store'])->name('training-store');
+});
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -41,9 +46,4 @@ Route::middleware([
 Route::group(['middleware' => ['role:developer']], function () {
     Route::get('/skills', fn () => view('skills'))->name('skills');
     Route::get('/rewards', fn () => view('rewards'))->name('rewards');
-});
-
-Route::group(['middleware' => ['role:hr_manager']], function () {
-    Route::get('/trainings/add', [TrainingController::class, 'create'])->name('training-add');
-    Route::post('/trainings/add', [TrainingController::class, 'store'])->name('training-store');
 });

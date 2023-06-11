@@ -54,7 +54,7 @@
                             </div>
                         </div>
 
-                    <button class="btn mt-6">Ajouter</button>
+                    <button class="btn mt-6 bg-green-500 text-white">Ajouter</button>
                 </form>
             </div>
         </div>
