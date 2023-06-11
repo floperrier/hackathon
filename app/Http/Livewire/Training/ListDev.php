@@ -1,0 +1,48 @@
+<?php
+
+namespace App\Http\Livewire\Training;
+
+use Auth;
+use Livewire\Component;
+
+class ListDev extends Component
+{
+
+    public $trainingObtained = false;
+
+    public function showTraining($trainingId)
+    {
+        $training = \App\Models\Training::find($trainingId);
+
+        $trainingParticipate = Auth::user()->trainings->contains($training);
+
+        $this->emit('showTrainingModal', [
+            'training' => $training,
+            'trainingParticipate' => $trainingParticipate
+        ]);
+    }
+
+    public function claimTraining($trainingId)
+    {
+        $training = \App\Models\Training::find($trainingId);
+        $user = Auth::user();
+
+        if (!$user->trainings->contains($training)) {
+            $user->trainings()->attach($training->id);
+            $this->emit('trainingClaimed');
+        }
+        else {
+            $this->emit('trainingClaimedError');
+        }
+    }
+
+    public function render()
+    {
+
+        $trainings = \App\Models\Training::paginate(5);
+
+        return view('livewire.training.list-dev', [
+            'trainings' => $trainings
+        ]);
+    }
+}
