@@ -1,6 +1,6 @@
 <div>
     <div>
-        <h2 class="text-2xl font-semibold leading-tight">Développeur</h2>
+        <h2 class="text-2xl font-semibold leading-tight">Développeurs</h2>
     </div>
     <div class="my-2 flex sm:flex-row flex-col justify-end">
         <div class="flex flex-row mb-1 sm:mb-0">

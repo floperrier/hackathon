@@ -12,7 +12,7 @@
                     @if (!Auth::user()->initiated)
                         <livewire:wizard.developer-wizard :user="Auth::user()" show-step="codewars"/>
                     @else
-                        <livewire:dashboard.developer />
+                        <livewire:user-profile :id="Auth::user()->id" />
                     @endif
                 @enddeveloper
                 @hrmanager

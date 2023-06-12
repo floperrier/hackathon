@@ -71,7 +71,7 @@
             @endif
             <td>{{ $user->getPoints(true) }}</td>
             <th>
-                <button class="btn btn-ghost btn-xs text-green-500">details</button>
+                <a class="btn btn-ghost btn-xs text-green-500" href="{{ route('userProfile',$user->id) }}">details</a>
             </th>
             </tr>
         @endforeach
